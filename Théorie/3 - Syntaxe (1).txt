@@ -1,0 +1,47 @@
+La syntaxe en Python est très simple, et donc malheureusement aussi, difficile à corriger lorsque vous ferez certaines fautes. La syntaxe consiste en 2 points clef. Le retour à la ligne pour une fin d'instruction et la tabulation pour l'appartenance à un scope. Il faut voir le code comme ceci :
+
+Instruction 1
+Instruction 2
+Instruction 3
+...
+
+et pour les imbrications comme ceci :
+
+Instruction 1
+	Sous Instruction 1A
+	Sous Instruction 1B
+	Sous Instruction 1C
+
+Instruction 2
+	Sous Instruction 2A
+	Sous Instruction 2B
+	Sous Instruction 2C
+
+Les sous-instructions seront précédées d'une tabulation, ce qui indique qu'elles ont une relation avec l'instruction principale sans tabulation qui la précède. Nous verrons les différentes relations plus tard. Mais si on pousse le raisonnement plus loin :
+
+Instruction 1
+	Sous Instruction 1A
+		Sub Sous Instruction 1A1
+		Sub Sous Instruction 1A2
+	Sous Instruction 1B
+	Sous Instruction 1C
+
+Instruction 2
+	Sous Instruction 2A
+	Sous Instruction 2B
+		Sub Sous Instruction 2B1
+		Sub Sous Instruction 2B2
+		Sub Sous Instruction 2B3
+	Sous Instruction 2C
+
+Ainsi, les "sub sous instruction" sont des sous-instruction de la sous-instruction de l'instruction, et son précédé de deux tabulations. Les informations se trouvant dans une sous-instruction ne sont pas accessibles par l'instruction mère naturellement, par contre l'inverse oui bien souvent.
+Ainsi, si on a :
+
+Variable A
+Variable B
+Variable C
+
+Le bloc de code comprenant la variable C aura souvent accès aux variables A et B, par contre le bloc de code comprenant la variable B n'aura accès qu'à la B et la A, et la A n'aura accès qu'à elle-même
+
+Ensuite, deuxième chose importante. On ne peux utiliser que des choses déclarée AVANT dans le code en python. Ainsi, une variable doit être déclarée et affectée (remplie) avant d'être utilisée, il en va de même pour une fonction.
+	

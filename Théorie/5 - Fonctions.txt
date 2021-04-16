@@ -1,0 +1,192 @@
+Bien souvent, les fonctions sont vues plus tard dans la programmation, mais j'ai personnellement pris l'habitude d'en parler avant les choses plus complexes dans un souci de clarté du cours, du code et le fait de prendre des bonnes habitudes.
+
+En effet, écrire "au feeling" du code, mène souvent vers ce qu'on appelle du code spaghetti. Un code où l'on se perd, ou nos collègues ne peuvent pas d'y retrouver, ou on a du mal de faire un changement sans tout casser, et ou plus on avance plus il est long de développer une features à cause de nos bases non-solide.
+
+Bien que nous en apprendrons tout au long du cours toujours un peu plus sur les fonctions, nous allons poser les bases maintenant, c'est un outil super puissant.
+
+Une fonction est un bloc de code, souvent représentant une action bien précise. Les interactions de celles-ci sur l'extérieur d'elle-même est possible, par contre l'inverse non. Pour mieux comprendre comment ça marche, faisons un parallèle avec un exemple de la vie de tous les jours.
+
+Si nous avons une action générale qui est "Faire les courses", nous appellerons ça notre programme, on peut facilement se rendre compte que l'action est divisée en 3 actions bien distinctes. La première est d'aller de chez nous au magasin, ensuite d'acheter un article et enfin rentrer chez nous. Bien sûr on pourrait décomposer chacun de ces actes en une série encore plus petite d'acte, et c'est sans doute ce que nous ferions si nous devions programmer réellement quelque chose qui fait ses courses, mais dans un souci de simplicité, on va dire que ce sont des actions simples et non-décomposable.
+
+Étape 1 : aller au magasin
+Étape 2 : acheter un article
+Étape 3 : revenir à la maison.
+
+Chacune de ces étapes fait partie d'un ensemble, cet ensemble est "aller faire les courses". Cet ensemble est le programme, et chacune de ces étapes qui le compose sont des fonctions. On peut même très facilement constater que "Aller au magasin" et "Revenir à la maison" sont en fait la même fonction, qui sont dans les deux cas "se déplacer d'un point A à un point B"
+
+On peut donc écrire notre programme sous la forme :
+
+étape 1 : MoveFromAtoB()
+étape 2 : BuySomething()
+étape 3 : MoveFromAtoB()
+
+
+
+Mais ces fonctions à l'heure actuelle ne font rien, nous devons les remplir, commençons par déclarer nos fonctions, elles sont toujours écrites de la même manière :
+
+def MoveFromAtoB():
+	return null
+
+
+function BuySomething():
+	return null
+
+Avant de continuer, décortiquons ça. Le premier mot, function, permet de dire que le mot qui suivra sera le nom de notre fonction. Par convention, le nom d'une fonction commence toujours par une majuscule. Il est suivi d'un couple de parenthèses. Dans ces parenthèses, nous écrirons les paramètres de la fonction, c'est-à-dire, les données dont la fonction aura besoin qui ne dépendent pas d'elle, mais du contexte extérieur. Dans notre cas, MoveFromAtoB(), la fonction sera consciente qu'elle doit faire un déplacement entre A et B, et sait comment se déplacer, mais elle ne sait pas à l'avance ou ce site A et ou se situe B, c'est l'utilisateur qui choisira dans un premier temps d'aller de sa maison au magasin et puis l'inverse. Mais on aurait pu imaginer qu'avant de rentrer, il aille au zoo, et alors on aurait pu réutiliser cette fonction, mais en rechangeant le point de départ et la destination. C'est donc dans ces parenthèses que nous devrons préciser ça.
+Ensuite, nous ouvrons l'accolade, tout ce qui se passe dans l'accolade appartient au scope de la fonction. Il n'y a qu'elle qui en est consciente, et lorsque la fonction est appelée, c'est ce code qui s'exécutera. Il est important de noter que ce code ne s'exécute pas à la déclaration de la fonction, mais bien à l'appel de celle-ci. Donc si la première chose que vous écrivez dans votre programme est une définition de la fonction BuySomething(), il ne va rien acheter, car la fonction a juste été définie !
+Enfin, avant l'accolade fermante, nous avant un return avec écrit dans notre cas null. Return est le signe que la fonction doit renvoyer quelque chose au code qui s'exécute qui a appelé cette fonction. Par exemple, on pourrait avoir une fonction renvoie "Bonjour" tout simplement, et si on print cette fonction, et bien, il sera écrit à l'écran Bonjour. Exemple :
+
+def SayHelloInFrench():
+	return "Bonjour"
+# Ici on a défini la fonction
+
+print(SayHelloInFrench()) # Ici on l'appelle, cela écrit Bonjour à l'écran car on print le return de SayHelloInFrench() qui est la string Bonjour.
+
+Bien sûr, vous vous rendez compte qu'on n'utilisera jamais une fonction dans ce cas-là, c'est inutile, mais c'est important de comprendre. D'ailleurs, on n'est pas obligé d'écrire dans nos exemples return null, c'est équivalent de ne rien écrire, mais vous vous pouvez prendre l'habitude d'écrire return null au début pour vous habituer et éviter des bugs !
+
+
+Reprenons donc nos deux fonctions en les améliorants avec ce qu'on a appris !
+
+def MoveFromAtoB($_startingPosition,$_endingPosition):
+	return null
+
+def BuySomething():
+	return null
+
+Maintenant, MoveFromAtoB() donne la possibilité à ce qui l'appelle de choisir une position de départ et une position d'arrivée. Cependant, pour le moment, nos fonctions ne font toujours rien, on va les remplir pour qu'elles agissent. Bien sûr, c'est un code totalement fictif qui ne fait rien à part écrire, c'est pour filer la métaphore des courses :
+
+function MoveFromAtoB($_startingPosition,$_endingPosition):
+	print("Je démarre de : " + $_startingPosition)
+	print("Je marche beaucoup")
+	print("Je m'arrête à : " + $_endingPosition)
+	return null
+
+function BuySomething():
+	print("J'achète un article")
+	return null
+
+
+Il ne nous reste plus qu'à appeler nos fonctions :
+
+MoveFromAtoB("adresseMaison","adresseMagasin")
+BuySomething()
+MoveFromAtoB("adresseMagasin,"adresseMaison")
+
+En fait, ces trois lignes de codes vont faire l'équivalent de :
+
+print("Je démarre de : " + "adresseMaison")
+print("Je marche beaucoup")
+print("Je m'arrête à : " + "adresseMagasin" )
+
+print("J'achète un article")
+
+print("Je démarre de : " + "adresseMagasin")
+print("Je marche beaucoup")
+print("Je m'arrête à : " + "adresseMaison")
+
+
+Et là, vous allez peut-être vous dire "ok super, mais c'est beaucoup de boulot et de théorie pour écrire 7 lignes en 13, c'est beaucoup de boulot ET c'est plus long !". Mais l'intérêt et dans le scale du projet. Si votre projet s'agrandit, et que votre journée est maintenant comme suit :
+
+étape 1 : aller au magasin
+étape 2 : acheter un article
+étape 3 : aller au zoo
+étape 4 : aller à la pharmacie
+étape 5 : acheter un article
+étape 6 : aller au marécher
+étape 7 : acheter un article
+étape 8 : revenir à la maison
+
+Et bien, il ne faut pas réécrire de code ! Il suffit simplement de rappeler nos fonctions déjà écrite !
+
+MoveFromAtoB("adresseMaison","adresseMagasin")
+BuySomething()
+MoveFromAtoB("adresseMagasin,"adresseZoo")
+MoveFromAtoB("adresseZoo,"adressePharmacie")
+BuySomething()
+MoveFromAtoB("adressePharmacie,"adresseMarecher")
+BuySomething()
+MoveFromAtoB("adresseMarecher","adresseMaison")
+
+Et hop le tour est joué, on est dans les deux façons d'écrire à 18 lignes de codes, sauf qu'à partir de maintenant, chaque fois qu'on fera appel à MoveFromAtoB(), on économisera 2 lignes de codes.
+
+Un autre gain non-négligeable du tout, est le fait que c'est beaucoup plus clair ! Si vous transformez un projet de 400 lignes de codes donc chacune est explicite sur ce qu'elle fait en un code de 200 lignes qui résume les actions en un mot de leur action, c'est beaucoup plus facile à lire.
+
+Ensuite, point super, méga, giga important, est la maintenance.
+
+Imaginez que vous ayez une fonctionA() qui équivaut à 10 lignes de codes. Vous faites appel à elle 10 fois dans votre code, et là : ça plante ! Vous savez que si il y a un problème qui est dans la fonction A, vous devrez la corriger une seule fois et tout votre code marchera ! De plus, si les 9 premiers appels fonctionnent, mais que le dernier plante, vous savez que c'est l'appel de la fonction le problème et pas la fonction en elle-même, car elle a marché 9 fois avant la fonction ne s'altère pas entre temps toute seule (sauf quand vous le voudrez, mais quand vous maîtriserez ça, vous serez à un niveau suffisant pour comprendre les fonctions parfaitement)!
+
+Et enfin, point ultra, super, oméga important : le scale de votre projet.
+
+Imaginez un projet où vous voulez à différents moments montrer votre carte d'identité sous forme de texte. Et vous faites ça 400 fois dans le code à pleins d'endroits différents. Ce sont simplement 4 lignes de texte Prénom, nom, âge, sexe. Et là votre boss vous appelle et vous dit "c'est bien ce que t'as fait Jean-Michel, mais on a un souci, moi j'veux que ça écrive aussi ta taille, j'ai oublié de te le dire la dernière fois". Et bien première chose, vous allez en vouloir à votre patron, mais c'est totalement illégitime ! Il vous suffisait de faire une fonction IDCard() qui print votre nom, votre prénom, votre âge et votre sexe ! Tout simplement, après ça votre patron pourrait vous demander d'ajouter 5 autres lignes, ça serait super simple pour vous, vous ajoutez simplement ce qu'il faut de nouveau dans la fonction, et pas besoin de retoucher à 400 endroits différents le code.
+
+En fait, vous pouvez voir une fonction comme un mini programme dans le programme !
+
+À partir de là, il faudra bien faire attention à l'endroit où vous déclarez vos variables et du nom de celle-ci.
+
+En effet, une variable déclarée dans le scope de la fonction, n'est pas atteignable par le reste du programme, à l'inverse, une variable déclarée dans le scope global du programme est lui atteignable grâce au mot clef global. Exemple :
+
+age = 35
+
+def changeAge():
+	age =52
+
+changeAge()
+
+print(age)
+
+A votre avis, quel sera le résultat ?
+
+Et bien le résultat est de 35, car la variable age affectée dans changeAge() est en fait une nouvelle variable propre à cette fonction. Dans notre cas, on voudrait pour change l'âge faire ceci :
+
+age = 35;
+
+def changeAge():
+	global age
+	age = 52
+
+
+changeAge();
+
+print(age)
+
+Dans ce cas, grâce au mot clef "global" on spécifie à notre fonction de reprendre, lorsque l'on va dire age dans le futur de cette fonction, utiliser en fait la variable définie hors de son scope.
+
+Vous remarquez que cela devient très vite incompréhensible si on a des variables qui portent le même nom au sein de scope différents. Il revient à vous de rendre ça le plus lisible possible. Par convention, on va vouloir mettre un underscore devant une variable de fonction, et rien devant les variables globales. Ainsi :
+
+age = 35
+
+def changeAge():
+	_age =52
+
+
+changeAge()
+
+print(age)
+
+On se rend bien compte que age n'est pas l'équivalent de _age et que cette deuxième variable appartient à un scope plus petit que la première, pourtant elles ont presque le même nom et veulent dire peut-être plus ou moins la même chose. Enfin, une question légitime qui devrait apparaître serait :
+
+Et si maintenant, dans le dernier exemple, je demandais de print _age à la fin et pas age, que se passerait-il ? Je vous rappel qu'il est important de se poser ce genre de question pour progresser, c'est en cherchant les subtilités qu'on se rend compte si on a bien compris !
+
+Et bien tout simplement, il va se dire que vous parlez d'une valeur non définie ! Et oui, _age est définie dans une fonction, et bien qu'au sein de cette fonction, vous puissiez print _age sans problème, en dehors de celle-ci, même si vous avez appelé cette fonction précédemment, la variable _age est inatteignable et le programme va croire que vous voulez en recréer une !
+
+Par contre, à contrario, on peut quand même atteindre une variable déclarée dans un scope plus grand depuis le scope plus petit, on ne peut juste pas le modifier. Exemple :
+
+age = 35
+
+def sayAge():
+	print(age)
+
+changeAge()
+
+Il va bien écrire 35 ! 
+Mais ce n'est pas pour autant que je peux faire 
+
+age = 35
+
+def sayAge():
+	age+5
+
+sayAge()
+
+print(age)
+
+car sans le mot clef global, on ne modifie pas réellement la variable age.

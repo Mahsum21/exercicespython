@@ -1,0 +1,25 @@
+1) Créer un dossier dans lequel vous allez mettre vos exercices python
+
+2) Créer un sous-dossier appelé chapitre 1
+
+3) Ouvrir ce dossier avec Visual Studio Code
+
+4) Sauvegarder un fichier appelé exercice1.py
+
+5) VSCode va proposer de télécharger l'extension pour python, autoriser celui-ci.
+
+6) En profiter pour télécharger Python Indent (en tapant soit Python, soit Python Indent dans la barre de recherche)
+
+7) Retourner, dans VSCode, sur notre fichier exercice1.py, cette fois-ci, vscode propose de télécharger Python, car on a de quoi gérer le code, mais on a pas encore un interpréteur, qui va savoir lire le python et exécuter le code qu'il y a dedans. Sinon allez sur https://www.python.org/downloads/ et lancer le téléchargement de python3.9.2, attention que si vous êtes sur MAC ou linux vous devrez voyager sur le site pour trouver le bon lien.
+
+8) Dès que vous avez téléchargé python, lancez l'installation. Lors de la première étape de l'installation, cochez bien la case " add Python 3.9 to PATH", ce qui permet de rajouter python dans les variables d'environnements. Et donc interpréter le python depuis la console avec le simple mot clef python.
+
+9) Si vous avez déjà pas mal bidouillé sur votre PC, envisagez d'augmenter la taille maximale du PATH avec l'option de fin de l'installer. Si c'est la première fois que vous codez, ne vous embêtez pas avec ça.
+
+10) Redémarrez votre PC
+
+11) Une fois le pc redémarré, on retourne dans VSCode, on ouvre le fichier .py précédemment créé et on écrit print("Hello World").
+
+12) On Fait ctrl+f5 et là, le code se lance dans la console en dessous de VSCode, logiquement celui-ci devrait vous afficher Hello World
+
+13) Si tout ça marche, on est maintenant prêt à Coder en Python ! Cela peut buguer et prendre un peu de temps pour que tout ceci fonctionne chez tout le monde, soyez donc patient, on va bientôt passer à la suite.

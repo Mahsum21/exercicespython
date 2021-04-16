@@ -1,0 +1,75 @@
+Pour lancer la console, vous pouvez appuyer sur la touche windows puis R en même temps, taper cmd et appuyer sur enter.
+
+Il y a deux autres petites subtilités à savoir.
+
+Les touches flèche du haut et flèche du bas : elles permettent de naviguer dans les dernières phrases que NOUS avons écrites. Donc si on fait
+
+CD /desktop
+
+Puis enter, puis que l'on fait flèche du haut, notre console va réécrire CD /desktop comme si nous l'avions réécrit.
+
+
+La touche Tabulation : elle permet de compléter le mot que vous étiez en train d'écrire ou naviguer dans vos différentes possibilités. Par exemple, si j'ai un dossier "jeux" sur mon bureau et que je me trouve sur le dossier
+
+C:\users\philip\desktop
+
+Si je fais :
+CD j
+
+Et que je fais tabulation, il va me proposer tous les fichiers présents dans le dossier courant (dans mon cas le bureau) qui commence par la lettre j, dans notre cas, il y en a peut-être plus d'un, mais si je tappe
+
+CD jeu
+
+Et que je fais tabulation, il y a de grandes chances qu'il ne reste qu'un dossier s'appelant "jeux". Une fois que j'ai trouvé le dossier qui m'intéressait, je peux appuyer sur enter, je rentre à ce moment-là dans ce dossier. De là, je peux refaire mon opération jusqu'à tomber dans le dossier que je veux où mes fichiers python sont contenus. Si vous vous êtes trompé de chemin, pour revenir au dossier parent, il suffit de taper
+
+CD ..\
+
+Si j'étais dans :
+
+C:\users\philip\desktop\jeux
+
+Et que je fais la commande
+
+CD ..\
+
+Je sors du dossier jeux pour revenir dans :
+
+C:\users\philip\desktop
+
+Dernière petite subtilité, si jamais vous voulez parcourir un plus long chemin que simplement sauter de dossier en dossier, vous pouvez utiliser les antislashes pour poursuivre votre nom de dossier. Si je suis dans :
+
+C:\users
+
+Et que je tape :
+
+CD philip\desktop\jeux
+
+Je vais directement arriver sûr:
+
+C:\users\philip\desktop\jeux
+
+Car j'étais dans users et j'ai tapé le bon chemin jusqu'à mon dossier jeu.
+
+Enfin, vous pouvez taper un chemin direct vers l'endroit ou vous allez en tapant tout le chemin jusqu'au dossier qui nous intéresse. Exemple si je suis là
+
+C:\users\jean-michel\desktop\musiques\rock
+
+Et que je tape directement :
+
+CD C:\users\philip\desktop\jeux
+
+Je vais passer directement du dossier rock de jean-michel à mon dossier jeux.
+
+Tout ça peut paraître un peu laborieux, mais c'est cette dernière solution que nous allons préférer. Et pour faciliter la chose, on peut accéder à ce nom complet de répertoire dans notre interface graphique pour le copier/coller. Pour ce faire, rendez-vous cette cette fois via votre interface windows classique dans le dossier où vous stockez vos fichier python.
+Faites F4, votre curseur se met alors dans la barre de nom de fichier de l'interface graphique, de là, il suffit de faire ctrl+a pour tout sélectionner, ctrl+c pour copier et là nous avons dans notre presse-papier la ligne directe vers cet endroit particulier de notre ordinateur.
+Retour dans notre console, on tape simplement CD suivi d'espace suivi de ctrl+v, et là nous collons donc notre chemin d'accès, il suffit alors d'appuyer sur enter, et nous voilà rendu à bonne destination.
+
+La dernière étape est la plus simple. Une fois dans le bon dossier, il ne nous reste plus qu'à taper :
+
+python NomDuFichier.py
+
+Pour le premier exercice, on aurait
+
+python C1A1.py
+
+on appuye sur enter, et ça nous lance le programme !

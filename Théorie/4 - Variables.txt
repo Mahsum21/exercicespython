@@ -1,0 +1,148 @@
+Une des pierres angulaires de la programmation et le Python ne fait pas exception, c'est l'utilisation des variables. En effet, juste maintenant, on a utilisé des phrases bien définie par nous-même et ça les affichais sans problème. On pourrait très bien aussi écrire et résoudre une opération mathématique par nous-même, par exemple on peut écrire :
+
+print("1 + 1 = 2")
+
+On trouve tout de suite des limites à ces utilisations. On ne s'adapte pas à une situation précise et notre fichier est figé dans l'état dans lequel on l'a codé. Premièrement, imaginez un texte qui serait affiché sur notre site web, pour remercier l'utilisateur de sa venue et qui lui dirait combien de fois il est venu sur le site. C'est là qu'on va pouvoir utiliser le Python par exemple.
+
+On va pouvoir donc créer une variable, la déclaration de variable en Python ce fait simplement en écrivant son nom suivi d'un égal et de la valeur qu'on veut lui affecter, exemple :
+
+maVariable = None
+
+Dans cet exemple, la variable est juste déclarée, elle est égale a None, il n'y a rien dedans. Si on veut qu'elle contienne quelque chose d'autre, il faut lui affecter une valeur, par exemple :
+
+name="Jean"
+age=40
+heigthInMeter=1.80
+isAdult=true
+
+Nous avons ici 4 variables, toutes avec des fonctionnements bien différents, pourtant la déclaration de celle-ci reste la même. 
+
+nomDeLaVariable=valeur
+
+L'utilisation de variable a deux avantages, le premier et le stockage d'informations inconnue à l'avance. Exemple, si on veut dire à notre utilisateur quand il se connecte :
+
+Bonjour Jean !
+
+Et bien, on pourrait maintenant écrire :
+
+print("Bonjour " + name + " !")
+
+
+L'avantage est qu'avec le Python, on peut récupérer des informations que l'utilisateur pourrait nous donner. Donc, dans notre cas, on pourrait demander à notre utilisateur de nous écrire son nom, ensuite le code affichera toujours le bon nom. Ainsi que ça soit Jean, Pierre au Paul qui essaye de lancer le programme, le Python affichera toujours :
+
+Bonjour nomDeLaPersonne !
+
+On remarque l'apparition dans notre print du + Le plus dans un print sert à "concaténer" une string. Une string est une chaîne de caractère. Dans notre cas, "Bonjour" est une chaîne de caractère, et $name est une variable qui contient elle-même une chaîne de caractère, dans notre cas, c'est "Jean". On peut très bien écrire :
+
+print("Bonjour " + "Jean" + " !")
+
+Mais dans notre cas, on a été intelligent, et on a stocké la valeur du nom de la personne, qui peut potentiellement varier, dans la variable name, on va donc l'utiliser à la place de Jean. Bien sûr, une variable ne doit pas être entourée de guillemets ! Sinon on va écrire littéralement la variable. Si vous écrivez :
+
+print ("Bonjour name !")
+
+Tout ce qui est pris dans les guillemets sera retranscrit littéralement, et on aura donc écrit :
+
+Bonjour name !
+
+Ce n'est pas le résultat recherché.
+
+Pour faire simple, le + entre 2 chaînes de caractère sert à les attacher ensemble.
+
+On pourrait aussi écrire "Bonjour Jean, tu as 40 ans.", pour ce faire, on a juste à écrire le début de notre phrase, et arrivé à l'âge, concaténer la variable âge à notre suite de caractères et terminer la phrase comme on le souhaite. Exemple :
+
+print("Bonjour " + name + ", tu as " + age + " ans.")
+
+Dernière petite subtilité maintenant, c'est que toutes nos variables n'ont pas été écrites de la même manière, pour rappel :
+
+name="Jean"
+age=40
+heigthInMeter=1.80
+isAdult=true
+
+Dans le cas de name, c'est une string, une chaîne de caractère, on en a déjà vu pas mal, elles servent principalement à afficher le texte que l'on va placer entre guillemets, c'est parfait pour stocker un nom, un bout de phrase, une adresse mail, un pseudo,...
+
+Pour ce qui est de age, c'est une integer, un entier en français, ou int en abrégé. On remarque qu'on ne met pas de guillemets, sinon on transforme notre int en chaîne de caractère. Un exemple simple, si je mets
+
+resultA = "1 + 1"
+resultB = 1 + 1
+resultC = age + 1
+
+Si on print les résultats on aura respectivement :
+
+1 + 1
+2
+41
+
+Car le résultat A est donc une string, il va juste régurgiter ce qu'on lui a donné à dire dans les guillemets. Le résultat B est une addition entre 1 et 1 et donc donnera 2, enfin le résultat C est une addition entre la variable age et 1, il va donc pouvoir écrire 41 si on additionne une string avec une int, on a un bug car les deux variables ne peuvent pas s'additionner. Exemple :
+
+numberA = "1"
+numberB = 1
+numberC = 2
+
+print(numberA + numberB)
+
+Cela donnera une erreur car numberA est entre guillemets et donc est une string, par contre, 
+
+print(numberB + $numberC)
+
+cela donnera 3 !
+
+Passons à notre troisième variable :
+
+heigthInMeter=1.80
+
+C'est une float, un nombre décimal, ou un nombre flottant en français. Je ne rentrerai pas trop dans les détails pour le moment, sachez juste que les mêmes problèmes qu'avec un int vont surgir lorsque vous essayerez de les manipuler avec des strings. Mais que vous aurez aussi potentiellement des problèmes lorsque vous manipulerez dans la même opération des int et des float, car les deux types ne fonctionnent pas exactement de la même manière. Ainsi, vous pourrez avoir des problèmes d'arrondis qui vont survenir, mais le plus simple est de faire du cas par cas lorsque les problèmes surviendront, il y en a beaucoup, et c'est impossible à retenir sans y être confronté !
+À noter que les float et les int sont tous deux considéré comme des nombres par le code, et on peut donc leur appliquer différentes opérations, on en verra plein à l'avenir, mais dans un premier temps sachez qu'on peut les additionner, les soustraire, les multiplier et les diviser, respectivement avec les signe + , - , *, / mais aussi les comparer. Plus grand que, plus petit que, égal à, différent de, avec les signes > , < , == , !=
+
+Enfin, la dernière variable est :
+
+isAdult=true
+
+C'est ce qu'on appelle un boolean ou booléen (à prononcer boule et un en français ou boule i ane en anglais) Ce sont des valeurs qui ne peuvent être que égale à true ou false, vrai ou faux. On a l'habitude d'appeler ça un flag aussi. Nous verrons l'utilité plus tard exactement, mais ce sont des variables très puissantes et la base même de la programmation, nous les utiliserons plus tard pour faire des embranchements dans le code, par exemple "Si tu es majeur, alors tu peux rentrer sur ce site, si tu n'es pas majeur alors tu es redirigé sur google.com" par exemple.
+
+Enfin, j'aimerais conclure sur un point théorique très important, c'est que nous ne faisons pas à la déclaration de la variable une égalité avec quelque chose, mais bien une affectation, c'est un raccourci de langage de lire par exemple :
+
+var = 4
+
+comme étant "var égale 4", il serait plus judicieux de dire "var contient la valeur en int 4". Et beaucoup de programmeurs prendront le premier raccourcis, mais il ne faut pas se laisser avoir par le langage parlé, en effet, var n'est pas réellement égal à 4, on ne le compare pas, on lui dit var tu es un petit tiroir qui stock des informations pour moi, et ton boulot est de stocker l'information 4 sous la forme d'integer, maintenant tu te fermes, et quand je te rappellerai plus loin dans mon code, tu vas t'ouvrir et me donner la valeur que tu contiens.
+
+Ainsi :
+
+name = "Jean"
+
+veut bien dire "la variable name contient une string dont la valeur est Jean". Et non pas "name égal Jean". Nous verrons l'égalité plus tard dans le cours, et c'est bien différent de ça, c'est pour ça qu'il faut dès maintenant se sortir de la tête qu'une affectation est une égalité. 
+
+Pour terminer, un petit point sur la nomenclature, pour déclarer une variable, commence toujours par une minuscule, ensuite pour chaque mot qui va suivre, on ne va pas mettre d'espace, on va continuer à coller notre nom, mais on va commencer chaque nouveau mot par une majuscule. C'est ce qu'on appelle le camelCase. Exemple :
+
+var
+variable
+variableContenantLeNom
+name
+nom
+nomDeLaPersonne
+
+Bien sûr, cette notation n'est pas obligatoire pour que le code fonctionne, mais c'est une sorte de convention, que beaucoup de développeurs adoptent pour repérer au premier coup d'œil si ce qu'on écrit est une variable ou pas. Vous serez, à l'avenir, confronté au travail en groupe et écrire tous de la même manière est un fabuleux avantage pour tout ceci.
+Enfin, n'hésitez surtout pas à donner des noms très précis sur ce que la variable fait. Par exemple, si ma variable stocke le taux de TVA en Finlande, on peut écrire :
+
+x = 10
+
+Le problème avec ça, c'est que si on veut plus tard déclarer le taux de TVA en Chine, et qu'on l'écrit sous cette forme :
+
+y = 15
+
+Je suis sûr qu'au bout de 15 variables et 1 semaine de travail, plus personne ne sait qui vaut quoi. Il serait aussi peu pertinent d'appeler notre variable de la sorte :
+
+TVA=10
+
+Car on sait que l'on va avoir potentiellement plusieurs TVA et on ne fait que reporter le problème. Concrètement, une bonne solution pourrait être :
+
+TVAFinland = 10
+TVAChina = 15
+
+De la sorte, on a toutes les informations importante dans le nom de la variable, et il sera bien plus simple de lire le code ou d'utiliser l'autocompléteur à l'avenir. D'ailleurs en parlant d'autocompléteur, dans notre cas, on sait que plus tard, lorsque nous voudrons appeler une de ces variables, dès que nous commenceront à taper TVA, le programme nous proposera de finir de lui-même par Finland ou China. Dans un gros projet, c'est sans doute la solution qu'on voudra préférer, mais une autre possibilité serait au contraire de commencer par le nom du pays. Exemple :
+
+FinlandTVA = 10
+ChinaTVA = 15
+
+C'est un choix qui doit se faire selon vos préférences et la pertinence dans le cas du projet qui nous intéresse.
+Plus le projet sera grand, plus il sera important de penser nos noms de variables, dans notre cas, au moins au début, essayez simplement de décrire au mieux ce que la variable va stocker.

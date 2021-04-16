@@ -1,0 +1,151 @@
+Tout d'abord, je voulais revenir sur les variables, lorsque nous avions vu les variables, nous avons vu une variable booléenne, pour rappel, elle se déclare de la sorte :
+
+isAdult = true
+
+Dans ce cas-ci, nous déclarons une variable qui s'appelle "isAdult" et nous lui affectons la valeur true. Nous aurions pu lui affecter la valeur false. Attention que si on écrit :
+
+isAdult = "true"
+
+Alors ce n'est plus un booléen mais une chaîne de caractère !
+
+Nous allons donc pouvoir utiliser ce genre de valeur dans les conditions.
+
+La première condition que nous allons voir est la condition if (si, en français). Le if, pose une question, si la réponse a cette question est true (vrai) alors il va exécuter le code qu'il contient, si pas, il va sauter à l'instruction suivante du scope dans lequel il se trouve. Un if s'écrit comme suit :
+
+if # Question ou la réponse est une valeur Booléene" :
+	#Code que l'on veut exécuter si la réponse à la question est true
+
+
+Dans un exemple de site avec la variable isAdult, on pourrait avoir :
+
+if isAdult :
+	LetTheUserIn()
+
+
+Ce pseudo code va laisser l'utilisateur entrer s'il est adulte.
+
+Ce qu'il serait intéressant de faire, c'est, de non pas demander à l'utilisateur s'il est adulte, mais lui demander son âge. Ainsi, le code va décider lui-même en fonction de cette information si l'utilisateur est adulte ou pas. On a donc ce code :
+
+adult=true
+age = 15
+
+if age<18 :
+	adult=false
+
+Maintenant, en fonction de l'âge donné, l'ordinateur va regarder si l'âge est en dessous de 18 ans, s'il l'est, la réponse à la question (age<18) donne la réponse true, donc il va stocker la valeur false dans le booléen isAdult, si pas, il ne va rien changer et le laisser isAdult à true.
+
+Bien sûr, l'expression entre parenthèses du if peut être aussi complexe que l'on veut, du moment que la réponse est une valeur booléenne. On pourrait par exemple regarder si la personne a plus de 85 ans ou est handicapée pour savoir si on peut lui donner une carte d'accès spéciale. On aurait alors :
+
+isDisabled=true
+	age=65
+
+if age>85 or isDisabled==true :
+	GiveASpecialCard()
+
+Dans ce cas-ci, le code verra que age>85 est false et que isDisabled==true est true. Donc on a (false)OU(true), la réponse est donc true, on va donc donner une carte spéciale d'accès à cette personne.
+
+À partir de là, tous les cas et les calculs booléens qu'on a vu sont applicable, au début ça sera peut-être un peu compliqué de calculer rapidement ces expressions lorsqu'elles mêlent fonctions, variables et opération, mais vous verrez qu'à force d'en faire ça devient instinctif.
+
+Petite question :
+
+Quelle est la différence entre :
+
+isDisabled=true
+et
+isDisabled==true
+
+Réponse :
+
+Avec = on dit a isDisabled : maintenant tu es égal à true. C'est une affectation.
+Avec == on demande à isDisabled : es-tu égal à true ? C'est un calcul Booléen.
+
+Maintenant, pour compléter le if, nous devons savoir quoi exécuter comme code quand la condition n'est pas remplie. Dans notre premier exemple, on regardait l'âge. Si la personne est majeure, on la laisse entrer, mais si la personne n'est pas majeure, il faut traiter ce cas aussi, il faut la renvoyer sur google.com.
+
+On pourrait fonctionner avec un autre if, par exemple :
+
+isAdult=false
+
+if isAdult==true :
+	LetTheUserIn()
+
+if isAdult==false :
+	RedericectUserToGoogle()
+
+Ca serait une façon de fonctionner, mais on a plus simple, et c'est le mot clef else (sinon) qui nous le permet. Dans ce cas-ci, on pourrait écrire :
+
+isAdult=false
+
+if isAdult==true :
+	LetTheUserIn()
+
+else :
+	RedericectUserToGoogle()
+
+
+À lire : "Si tu es adulte je laisse entrer l'utilisateur SINON je le redirige vers google".
+Le else permet de traiter tous les cas qui ne sont pas traités précédemment. Il exécute le code entre accolades si le code n'est pas entré dans le if. Au contraire, si le code était entré dans le premier if, le code passera au-dessus du else et ne rentrera pas dans ses accolades.
+
+Attention, le else s'adresse au dernier if, pas à ceux avant. Si on a :
+
+if isMale :
+	print("You're a Man")
+
+if isAdult==true :
+	LetTheUserIn()
+
+else :
+	print("You're a Woman")
+
+Le else répond au deuxième if, pas au premier, et affichera donc "tu es une femme" si l'utilisateur n'est pas majeur ! On ne veut pas ça, il faut donc écrire :
+
+if isMale:
+	print("You're a Man")
+
+else :
+	print("You're a Woman")
+
+if isAdult==true :
+	LetTheUserIn()
+
+Et là le else répond bien au premier if, et dira "tu es une femme" si l'utilisateur n'est pas un homme.
+
+Maintenant, cette technique nous permet de facilement traiter les cas qui n'ont que 2 possibilités, mais pour traiter les cas où il y a plus que deux possibilités, nous avons aussi le elif en un mot. Dans le code, il se situera toujours après un if, et souvent avant un else ou un elseif. Il veut dire "sinon si".
+
+Prenons le cas d'une personne, si elle a plus de 10 ans, la personne peut s'habiller toute seule, si elle a moins de 10 ans, un de ses parents l'habillera. À ce moment la, nous regarderons si est un garçon ou une fille, si c'est une fille sa maman l'habillera, si pas, ça sera son papa.
+
+Nous avons donc deux informations sur la personne, son âge et son sexe :
+
+age=10
+isFemale=true
+
+//Nous avons l'habitude de définir les booléens en ne commençant toujours pas "isSomething" ou "hasSomething".
+
+if age>=10 :
+	DressAlone()
+
+elif isFemale==false :
+	DadDressChild()
+else :
+MomDressChild()
+
+On aurait pu terminer par un elif, mais ça ne sert a rien, si la personne n'a pas 10 ans ou plus et que ce n'est pas, pas une fille, on sait d'office que c'est une jeune fille, donc sa maman l'habillera. Dans ce cas-ci, l'enfant a 10 ans, il peut donc s'habiller tout seul car age>=10 est vrai. Il faut faire attention avec les négations, doubles négations, etc. Je prends volontairement des cas un peu tordu pour faire réfléchir, et s'exercer, mais dans le code, essayez toujours d'aller au plus simple. Nommez vos variables positivement et comparez toujours à true dans le if et le cas false sera traité dans le else. Du moins, si vous commencez d'une manière, tenez-vous y, et ne changez pas sans cesse de manière de fonctionner.
+
+Enfin, il est bon de savoir que les if, les else et les else if contiennent en leur sein, un peu comme une fonction, un mini programme. C'est vous qui décidez de ce qu'il va se passer dans le if, mais, donc, d'autres if, else et elseif peuvent venir s'imbriquer. Pour reprendre notre exemple, on pourrait avoir :
+
+age=18
+isFemale=true
+
+if age>=10 :
+	if isFemale==true:
+		DressWithASkirt()
+	else :
+		DressWithAKilt()
+
+elseif$isFemale==false :
+	DadDressChild()
+else :
+	MomDressChild()
+
+
+
+On a sensiblement le même code qu'avant, sauf que si la personne a plus de 10 ans, on va regarder en plus si c'est une femme ou non, en fonction, on va habiller la personne différemment. Ces ramifications peuvent aller de plus en plus loin, et peuvent être très mal organisées. Lorsque vous tombez sur des conditions, essayez toujours de réfléchir au moyen le plus simple et le plus clair de l'écrire, ça sera utile pour vous et pour les personnes qui liront votre code ou vos collègues.
